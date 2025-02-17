@@ -1,27 +1,18 @@
 <template>
-  <div class="min-h-screen flex justify-center z-1 relative">
-    <!-- Language Switcher -->
-    <div
-      v-for="locale in availableLocales"
-      :key="locale.code"
-      class="absolute top-4 right-4 sm:top-8 sm:right-10"
-    >
-      <UButton
-        class="text-brick-red-200 font-semibold text-lg sm:text-xl"
-        color="neutral"
-        variant="ghost"
-        @click="setLocale(locale.code)"
-        >{{ locale.name }}</UButton
-      >
-    </div>
-
+  <div
+    class="min-h-screen flex justify-center relative bg-gray-100 dark:bg-gray-950 transition-colors"
+  >
+    <Switcher />
     <div class="w-full sm:w-2/3 px-6 sm:px-4 mb-20">
       <h1
-        class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-10 sm:mt-20"
+        class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-10 sm:mt-20 flex items-center gap-3"
       >
+        <img src="/assets/img/hako.png" class="w-12 sm:w-14 h-auto" draggable="false" />
         Hako
       </h1>
-      <p class="noselect mt-5 text-lg sm:text-xl text-gray-400">
+      <p
+        class="noselect mt-5 text-lg sm:text-xl text-gray-400 dark:text-gray-300"
+      >
         {{ $t("welcome") }}
       </p>
       <div
@@ -32,25 +23,29 @@
         <router-link :to="'/entries/' + entry.id">
           <h3
             :style="{ color: 'var(--accent-four)' }"
-            class="text-xl sm:text-3xl font-bold mt-6 sm:mt-10"
+            class="text-xl sm:text-3xl font-bold mt-6 sm:mt-10 dark:text-accent-light"
           >
             {{ entry.title }}
           </h3>
         </router-link>
 
-        <p class="text-gray-700 text-sm sm:text-base font-semibold">
+        <p
+          class="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
+        >
           {{ moment(entry.uploadedAt).format("Do MMM, YYYY") }} •
           <span class="font-bold">{{ entry.author }}</span>
         </p>
 
         <div class="flex flex-wrap items-center space-x-2">
-          <p class="text-gray-600 text-sm sm:text-base font-semibold">
+          <p
+            class="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-semibold"
+          >
             {{ entry.desc }}
           </p>
           <p
             v-for="tag in entry.tags"
             :key="tag"
-            class="text-gray-600 bg-[#FFBADB] text-xs sm:text-sm font-medium px-2 py-1 rounded border border-[#BC5677]"
+            class="text-gray-600 dark:text-gray-200 bg-[#FFBADB] dark:bg-[#682c3f] text-xs sm:text-sm font-medium px-2 py-1 rounded border border-[#BC5677] dark:border-[#91415a]"
           >
             #{{ tag }}
           </p>
