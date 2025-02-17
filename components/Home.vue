@@ -5,7 +5,7 @@
     <Switcher />
     <div class="w-full sm:w-2/3 px-6 sm:px-4 mb-20">
       <h1
-        class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-10 sm:mt-20 flex items-center gap-3"
+        class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-20 flex items-center gap-3"
       >
         <img src="/assets/img/hako.png" class="w-12 sm:w-14 h-auto" draggable="false" />
         Hako
