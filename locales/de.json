@@ -1,3 +1,6 @@
 {
-    "welcome": "Eine Kollektion archiverbarer Schriften."
+    "welcome": "Eine Kollektion archiverbarer Schriften.",
+    "editor.title": "Eintragseditor",
+    "editor.desc": "Dies ist der Eingabe-Editor, in dem alle Einträge verfasst werden. Der Zugang zu diesem Bereich ist ausschließlich autorisierten Nutzern gestattet.",
+    "editor.step": "Bitte geben Sie die Autorisierungs-PIN ein."
 }

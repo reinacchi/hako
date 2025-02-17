@@ -1,3 +1,6 @@
 {
-    "welcome": "A collection of archivable writings."
+    "welcome": "A collection of archivable writings.",
+    "editor.title": "Entry Editor",
+    "editor.desc": "This is the Entry Editor, where all entries are created. Access to this area is restricted to authorised users only.",
+    "editor.step": "Please enter the authorisation PIN."
 }
