@@ -29,7 +29,7 @@
     </ClientOnly>
 
     <!-- Authorise to Entries Editor -->
-    <UModal :title="$t('editor.title')" :description="$t('editor.desc')" :close="{ color: 'neutral', variant: 'outline', class: 'rounded-full' }">
+    <UModal :fullscreen="isAuth" :title="$t('editor.title')" :description="$t('editor.desc')" :close="{ color: 'neutral', variant: 'outline', class: 'rounded-full' }">
       <UButton icon="i-lucide-pen" color="neutral" variant="ghost" />
 
       <template #body>
@@ -47,7 +47,9 @@
 <script setup>
 const { locale, locales, setLocale } = useI18n();
 const colourMode = useColorMode();
+const config = useAppConfig();
 const pin = ref([]);
+const isAuth = ref(false);
 
 const availableLocales = computed(() => {
   return locales.value.filter((i) => i.code !== locale.value);
@@ -60,5 +62,11 @@ const isDark = computed({
   set() {
     colourMode.preference = colourMode.value === "dark" ? "light" : "dark";
   },
+});
+
+watch(pin, (newPin) => {
+  if (newPin.join("") === config.PIN) {
+    isAuth.value = true;
+  }
 });
 </script>
