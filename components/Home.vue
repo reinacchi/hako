@@ -2,12 +2,15 @@
   <div
     class="min-h-screen flex justify-center relative bg-gray-100 dark:bg-gray-950 transition-colors"
   >
-    <Switcher />
     <div class="w-full sm:w-2/3 px-6 sm:px-4 mb-20">
       <h1
         class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-20 flex items-center gap-3"
       >
-        <img src="/assets/img/hako.png" class="w-12 sm:w-14 h-auto" draggable="false" />
+        <img
+          src="/assets/img/hako.png"
+          class="w-12 sm:w-14 h-auto"
+          draggable="false"
+        />
         Hako
       </h1>
       <p
@@ -17,7 +20,7 @@
       </p>
       <div
         class="text-left noselect space-y-2"
-        v-for="entry in entries.reverse()"
+        v-for="entry in entries"
         :key="entry.date"
       >
         <router-link :to="'/entries/' + entry.id">
@@ -58,19 +61,15 @@
 <script setup>
 import moment from "moment";
 
-const { locale, locales, setLocale } = useI18n();
-
-const availableLocales = computed(() => {
-  return locales.value.filter((i) => i.code !== locale.value);
-});
-
 const entries = ref([]);
 
 onMounted(async () => {
   try {
-    entries.value = await $fetch("/api/entries", {
+    const data = await $fetch("/api/entries", {
       method: "GET",
     });
+
+    entries.value = data.reverse();
   } catch (error) {
     console.error("Failed to fetch entries:", error);
   }

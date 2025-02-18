@@ -37,7 +37,7 @@
           <p class="text-gray-600 dark:text-gray-300">
             {{ $t("editor.step") }}
           </p>
-          <UPinInput class="mt-5" :length="6" v-model="pin" />
+          <UPinInput color="neutral" class="mt-5" :length="6" v-model="pin" />
         </div>
       </template>
     </UModal>
