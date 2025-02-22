@@ -75,15 +75,13 @@
 
           <div class="mt-4 space-y-3">
             <UInput
-              color="neutral"
-              variant="soft"
+              color="none"
               v-model="newComment.name"
               :placeholder="$t('entry.comment.name')"
               class="w-full text-gray-800 dark:text-gray-200"
             />
             <UTextarea
-              color="neutral"
-              variant="soft"
+              color="none"
               v-model="newComment.text"
               :placeholder="$t('entry.comment.write')"
               class="w-full text-gray-800 dark:text-gray-200"
