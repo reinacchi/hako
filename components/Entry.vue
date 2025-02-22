@@ -20,21 +20,21 @@
           </UTooltip>
         </NuxtLink>
 
-        <div class="space-y-3 mt-16 sm:mt-20">
+        <div class="mt-16 sm:mt-20">
           <h3
-            class="text-xl sm:text-3xl font-bold text-brick-red-300 dark:text-brick-red-300"
+            class="mt-3 text-xl sm:text-3xl font-bold text-brick-red-300 dark:text-brick-red-300"
           >
             {{ entry.title }}
           </h3>
 
           <p
-            class="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
+            class="mt-3 text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
           >
             {{ moment(entry.date).format("Do MMM, YYYY") }} •
             <span class="font-bold">{{ entry.author }}</span>
           </p>
 
-          <div class="flex flex-wrap gap-2 items-start sm:items-center">
+          <div class="mt-3 flex flex-wrap gap-2 items-start sm:items-center">
             <blockquote
               class="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 text-sm sm:text-base w-full sm:w-auto"
             >
@@ -57,7 +57,6 @@
           class="border-t-2 border-brick-red-500 mt-6 w-full dark:border-brick-red-400"
         />
 
-        <!-- Entry Content -->
         <div
           class="mt-6 text-gray-800 dark:text-gray-300 text-sm sm:text-base leading-relaxed"
         >
@@ -67,28 +66,27 @@
           class="border-t-2 border-brick-red-500 mt-6 w-full dark:border-brick-red-400"
         />
 
-        <!-- Comments Section -->
         <div class="mt-10">
           <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
             {{ $t("entry.comment") }}
           </h3>
 
-          <div class="mt-4 space-y-3">
+          <div class="mt-3">
             <UInput
               color="none"
               v-model="newComment.name"
               :placeholder="$t('entry.comment.name')"
-              class="w-full text-gray-800 dark:text-gray-200"
+              class="w-full text-gray-800 dark:text-gray-200 mt-3"
             />
             <UTextarea
               color="none"
               v-model="newComment.text"
               :placeholder="$t('entry.comment.write')"
-              class="w-full text-gray-800 dark:text-gray-200"
-              />
-              <UButton
+              class="w-full text-gray-800 dark:text-gray-200 mt-3"
+            />
+            <UButton
               @click="submitComment"
-              class="text-gray-600 dark:text-white px-4 py-2 rounded"
+              class="text-gray-600 dark:text-white px-4 py-2 rounded mt-3"
               color="secondary"
               variant="outline"
             >
@@ -96,7 +94,17 @@
             </UButton>
           </div>
 
-          <!-- Display Comments -->
+          <div v-if="isLoading" class="mt-6 space-y-4">
+            <div
+              v-for="n in 2"
+              :key="n"
+              class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
+            >
+              <USkeleton class="h-4 w-32 mb-2" />
+              <USkeleton class="h-4 w-full" />
+            </div>
+          </div>
+
           <div v-if="comments.length" class="mt-6 space-y-4">
             <div
               v-for="comment in comments"
@@ -132,6 +140,7 @@ const entry = await $fetch(`/api/entries/${entryID}`);
 
 const comments = ref([]);
 const newComment = ref({ name: "", text: "" });
+const isLoading = ref(true);
 
 const fetchComments = async () => {
   try {
@@ -139,6 +148,8 @@ const fetchComments = async () => {
     comments.value = fetchedComments.reverse();
   } catch (error) {
     console.error("Failed to fetch comments:", error);
+  } finally {
+    isLoading.value = false;
   }
 };
 

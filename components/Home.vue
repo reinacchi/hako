@@ -30,7 +30,7 @@
       </p>
 
       <div
-        class="text-left noselect space-y-2"
+        class="text-left noselect"
         v-for="entry in entries"
         :key="entry.id"
       >
@@ -43,13 +43,13 @@
         </router-link>
 
         <p
-          class="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
+          class="mt-1 text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
         >
           {{ moment(entry.date).format("Do MMM, YYYY") }} •
           <span class="font-bold">{{ entry.author }}</span>
         </p>
 
-        <div class="inline-flex flex-wrap items-center gap-2">
+        <div class="mt-3 inline-flex flex-wrap items-center gap-2">
           <blockquote
             class="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 text-sm sm:text-base"
           >

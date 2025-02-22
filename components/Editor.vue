@@ -3,7 +3,6 @@
     class="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg text-gray-900 dark:text-white space-y-6"
   >
     <div class="space-y-4">
-      <!-- Title -->
       <div>
         <label
           class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
@@ -18,7 +17,6 @@
         />
       </div>
 
-      <!-- Description -->
       <div>
         <label
           class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
@@ -33,7 +31,6 @@
         />
       </div>
 
-      <!-- Author -->
       <div>
         <label
           class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
@@ -48,7 +45,6 @@
         />
       </div>
 
-      <!-- Tags -->
       <div>
         <label
           class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2"
@@ -80,7 +76,6 @@
       </div>
     </div>
 
-    <!-- Markdown Editor -->
     <div>
       <label
         class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2"
@@ -93,7 +88,6 @@
       </div>
     </div>
 
-    <!-- Live HTML Output -->
     <div>
       <label
         class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
@@ -105,7 +99,6 @@
       >
     </div>
 
-    <!-- Post Button -->
     <UButton
       color="primary"
       size="xl"
