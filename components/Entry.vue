@@ -71,7 +71,7 @@
             {{ $t("entry.comment") }}
           </h3>
 
-          <div class="mt-4 space-y-6">
+          <div class="mt-4 space-y-3">
             <UInput
               color="neutral"
               v-model="newComment.name"
