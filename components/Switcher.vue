@@ -1,19 +1,5 @@
 <template>
-  <div
-    class="absolute top-4 right-4 sm:top-8 sm:right-10 flex items-center space-x-2"
-  >
-    <!-- Language Switcher -->
-    <div v-for="locale in availableLocales" :key="locale.code">
-      <UButton
-        class="text-brick-red-200 noselect font-semibold text-lg sm:text-xl"
-        color="neutral"
-        variant="ghost"
-        @click="setLocale(locale.code)"
-      >
-        {{ locale.name }}
-      </UButton>
-    </div>
-
+  <div class="absolute top-4 right-4 sm:top-8 sm:right-10 flex items-center space-x-1">
     <!-- Colour Mode Switcher -->
     <ClientOnly v-if="!colourMode?.forced">
       <UButton
@@ -29,7 +15,12 @@
     </ClientOnly>
 
     <!-- Authorise to Entries Editor -->
-    <UModal :fullscreen="isAuth" :title="$t('editor.title')" :description="$t('editor.desc')" :close="{ color: 'neutral', variant: 'outline', class: 'rounded-full' }">
+    <UModal
+      :fullscreen="isAuth"
+      :title="$t('editor.title')"
+      :description="$t('editor.desc')"
+      :close="{ color: 'neutral', variant: 'outline', class: 'rounded-full' }"
+    >
       <UButton icon="i-lucide-pen" color="neutral" variant="ghost" />
 
       <template #body>
@@ -44,6 +35,17 @@
         </div>
       </template>
     </UModal>
+    <!-- Language Switcher -->
+    <div v-for="locale in availableLocales" :key="locale.code">
+      <UButton
+        class="text-brick-red-200 noselect font-semibold text-lg sm:text-xl"
+        color="neutral"
+        variant="ghost"
+        @click="setLocale(locale.code)"
+      >
+        {{ locale.name }}
+      </UButton>
+    </div>
   </div>
 </template>
 

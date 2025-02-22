@@ -21,7 +21,9 @@
         </NuxtLink>
 
         <div class="space-y-3 mt-16 sm:mt-20">
-          <h3 class="text-xl sm:text-3xl font-bold dark:text-accent-light">
+          <h3
+            class="text-xl sm:text-3xl font-bold text-brick-red-300 dark:text-brick-red-300"
+          >
             {{ entry.title }}
           </h3>
 
@@ -52,7 +54,7 @@
         </div>
 
         <hr
-          class="border-t-2 border-[var(--accent-two)] mt-6 w-full dark:border-gray-600"
+          class="border-t-2 border-brick-red-500 mt-6 w-full dark:border-brick-red-400"
         />
 
         <!-- Entry Content -->
@@ -62,7 +64,7 @@
           <span v-html="entry.content" class="mb-4"></span>
         </div>
         <hr
-          class="border-t-2 border-[var(--accent-two)] mt-6 w-full dark:border-gray-600"
+          class="border-t-2 border-brick-red-500 mt-6 w-full dark:border-brick-red-400"
         />
 
         <!-- Comments Section -->
@@ -74,17 +76,19 @@
           <div class="mt-4 space-y-3">
             <UInput
               color="neutral"
+              variant="soft"
               v-model="newComment.name"
               :placeholder="$t('entry.comment.name')"
               class="w-full text-gray-800 dark:text-gray-200"
             />
             <UTextarea
               color="neutral"
+              variant="soft"
               v-model="newComment.text"
               :placeholder="$t('entry.comment.write')"
               class="w-full text-gray-800 dark:text-gray-200"
-            />
-            <UButton
+              />
+              <UButton
               @click="submitComment"
               class="text-gray-600 dark:text-white px-4 py-2 rounded"
               color="secondary"
