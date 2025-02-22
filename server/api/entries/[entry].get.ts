@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
         if (!entry) {
             return {
                 code: 404,
-                message: "Unknown Post"
+                message: "Unknown Entry"
             }
         } else {
             return entry;

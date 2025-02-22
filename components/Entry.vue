@@ -59,7 +59,7 @@
         <div
           class="mt-6 text-gray-800 dark:text-gray-300 text-sm sm:text-base leading-relaxed"
         >
-          <p v-html="entry.content" class="mb-4"></p>
+          <span v-html="entry.content" class="mb-4"></span>
         </div>
         <hr
           class="border-t-2 border-[var(--accent-two)] mt-6 w-full dark:border-gray-600"
