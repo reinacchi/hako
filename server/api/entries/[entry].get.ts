@@ -1,8 +1,8 @@
-import { Entries } from "~/models/entries";
+import { Entries, type Entry } from "~/models/entries";
 
 export default defineEventHandler(async (event) => {
     const entryID = getRouterParam(event, "entry") as string;
-    const entry = await Entries.findOne({ id: entryID });
+    const entry = await Entries.findOne({ id: entryID }) as Entry;
 
         if (!entry) {
             return {
@@ -10,6 +10,15 @@ export default defineEventHandler(async (event) => {
                 message: "Unknown Entry"
             }
         } else {
-            return entry;
+            return {
+                author: entry.author,
+                comments: entry.comments,
+                content: entry.content,
+                date: entry.date,
+                desc: entry.desc,
+                id: entry.id,
+                tags: entry.tags,
+                title: entry.title,
+            };
         }
 });

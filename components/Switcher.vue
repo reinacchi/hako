@@ -1,5 +1,7 @@
 <template>
-  <div class="absolute top-4 right-4 sm:top-8 sm:right-10 flex items-center space-x-1">
+  <div
+    class="absolute top-4 right-4 sm:top-8 sm:right-10 flex items-center space-x-1"
+  >
     <!-- Colour Mode Switcher -->
     <ClientOnly v-if="!colourMode?.forced">
       <UButton
@@ -28,7 +30,13 @@
           <p class="text-gray-600 dark:text-gray-300">
             {{ $t("editor.step") }}
           </p>
-          <UPinInput color="neutral" class="mt-5" :length="6" v-model="pin" />
+          <UPinInput
+            color="none"
+            variant="outline"
+            class="mt-5"
+            :length="6"
+            v-model="pin"
+          />
         </div>
         <div class="mt-10" v-if="isAuth">
           <Editor />

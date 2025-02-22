@@ -45,7 +45,7 @@
         <p
           class="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
         >
-          {{ moment(entry.uploadedAt).format("Do MMM, YYYY") }} •
+          {{ moment(entry.date).format("Do MMM, YYYY") }} •
           <span class="font-bold">{{ entry.author }}</span>
         </p>
 
