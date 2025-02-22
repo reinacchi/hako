@@ -1,7 +1,9 @@
 import { model, Schema } from "mongoose";
+import { type Comment } from "~/types/comment";
 
 export interface Entry {
     author: string;
+    comments: Comment[];
     content: string;
     desc: string;
     id: string;
@@ -11,34 +13,14 @@ export interface Entry {
 }
 
 const entriesSchema = new Schema<Entry>({
-    author: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    content: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    desc: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    id: {
-        type: Schema.Types.String,
-        required: true
-    },
-    tags: {
-        type: [Schema.Types.String],
-        required: true,
-    },
-    title: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    date: {
-        type: Schema.Types.Date,
-        required: true,
-    },
+    author: { type: String, required: true },
+    comments: { type: [{ type: Schema.Types.Mixed, ref: "Comment" }], default: [] },
+    content: { type: String, required: true },
+    desc: { type: String, required: true },
+    id: { type: String, required: true },
+    tags: { type: [String], default: [] },
+    title: { type: String, required: true },
+    date: { type: Date, default: new Date() },
 });
 
-export const Entries = model<Entry>("entries", entriesSchema);
+export const Entries = model("entries", entriesSchema);
