@@ -39,6 +39,9 @@
           </p>
           <UPinInput color="neutral" class="mt-5" :length="6" v-model="pin" />
         </div>
+        <div class="mt-10" v-if="isAuth">
+          <Editor />
+        </div>
       </template>
     </UModal>
   </div>

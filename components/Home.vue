@@ -2,7 +2,17 @@
   <div
     class="min-h-screen flex justify-center relative bg-gray-100 dark:bg-gray-950 transition-colors"
   >
-    <div class="w-full sm:w-2/3 px-6 sm:px-4 mb-20">
+    <div
+      v-if="isLoading"
+      class="w-full sm:w-2/3 px-6 sm:px-4 mb-20 flex items-center justify-center min-h-screen"
+    >
+      <UIcon name="i-lucide-loader" class="animate-spin text-3xl text-gray-500 dark:text-gray-300" />
+    </div>
+
+    <div
+      v-else
+      class="w-full sm:w-2/3 px-6 sm:px-4 mb-20 animate-slide-up"
+    >
       <h1
         class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-20 flex items-center gap-3"
       >
@@ -18,14 +28,14 @@
       >
         {{ $t("welcome") }}
       </p>
+
       <div
         class="text-left noselect space-y-2"
         v-for="entry in entries"
-        :key="entry.date"
+        :key="entry.id"
       >
         <router-link :to="'/entries/' + entry.id">
           <h3
-            :style="{ color: 'var(--accent-four)' }"
             class="text-xl sm:text-3xl font-bold mt-6 sm:mt-10 dark:text-accent-light"
           >
             {{ entry.title }}
@@ -39,12 +49,13 @@
           <span class="font-bold">{{ entry.author }}</span>
         </p>
 
-        <div class="flex flex-wrap items-center space-x-2">
-          <p
-            class="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-semibold"
+        <div class="inline-flex flex-wrap items-center gap-2">
+          <blockquote
+            class="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 text-sm sm:text-base"
           >
             {{ entry.desc }}
-          </p>
+          </blockquote>
+
           <p
             v-for="tag in entry.tags"
             :key="tag"
@@ -62,16 +73,16 @@
 import moment from "moment";
 
 const entries = ref([]);
+const isLoading = ref(true);
 
 onMounted(async () => {
   try {
-    const data = await $fetch("/api/entries", {
-      method: "GET",
-    });
-
-    entries.value = data.reverse();
+    const data = await $fetch("/api/entries");
+    entries.value = data.reverse(); // Newest entries first
   } catch (error) {
     console.error("Failed to fetch entries:", error);
+  } finally {
+    isLoading.value = false;
   }
 });
 
