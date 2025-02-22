@@ -17,7 +17,7 @@ useHead({
     { property: "og:title", content: "Hako" },
     { property: "og:site_name", content: entry.title },
     { property: "og:description", content: entry.desc },
-    { property: "og:image", content: "/img/hako.png" },
+    { property: "og:image", content: "/hako.png" },
     { property: "og:image:type", content: "image/png" },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },

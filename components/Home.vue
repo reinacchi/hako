@@ -95,7 +95,7 @@ useHead({
       property: "og:description",
       content: "A collection of archivable writings.",
     },
-    { property: "og:image", content: "/img/hako.png" },
+    { property: "og:image", content: "/hako.png" },
     { property: "og:image:type", content: "image/png" },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
