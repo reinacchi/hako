@@ -6,13 +6,13 @@
       v-if="isLoading"
       class="w-full sm:w-2/3 px-6 sm:px-4 mb-20 flex items-center justify-center min-h-screen"
     >
-      <UIcon name="i-lucide-loader" class="animate-spin text-3xl text-gray-500 dark:text-gray-300" />
+      <UIcon
+        name="i-lucide-loader"
+        class="animate-spin text-3xl text-gray-500 dark:text-gray-300"
+      />
     </div>
 
-    <div
-      v-else
-      class="w-full sm:w-2/3 px-6 sm:px-4 mb-20 animate-slide-up"
-    >
+    <div v-else class="w-full sm:w-2/3 px-6 sm:px-4 mb-20 animate-slide-up">
       <h1
         class="font-sans font-bold text-4xl sm:text-5xl text-brick-red-400 tracking-widest noselect text-left mt-20 flex items-center gap-3"
       >
@@ -95,6 +95,10 @@ useHead({
       property: "og:description",
       content: "A collection of archivable writings.",
     },
+    { property: "og:image", content: "/img/hako.png" },
+    { property: "og:image:type", content: "image/png" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
     { name: "theme-color", content: "#cc536e" },
     { "http-equiv": "x-ua-compatible", content: "IE=edge" },
     { name: "viewport", content: "width=device-width, initial-scale=1.0" },

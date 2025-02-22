@@ -134,7 +134,7 @@ const newComment = ref({ name: "", text: "" });
 const fetchComments = async () => {
   try {
     const fetchedComments = await $fetch(`/api/entries/${entryID}/comments`);
-    comments.value = fetchedComments.reverse(); // Show newest first
+    comments.value = fetchedComments.reverse();
   } catch (error) {
     console.error("Failed to fetch comments:", error);
   }
@@ -156,16 +156,14 @@ const submitComment = async () => {
       body: JSON.stringify(newComment.value),
     });
 
-    // Manually add the comment to avoid unnecessary API call delay
     comments.value.unshift({
       name: newComment.value.name,
       text: newComment.value.text,
-      date: new Date(), // Local timestamp
+      date: new Date(),
     });
 
     newComment.value = { name: "", text: "" };
 
-    // Fetch latest comments from the server
     await fetchComments();
   } catch (error) {
     console.error("Failed to submit comment:", error);
@@ -177,6 +175,10 @@ useHead({
   title: "Hako",
   meta: [
     { property: "og:title", content: "Hako" },
+    { property: "og:image", content: "/img/hako.png" },
+    { property: "og:image:type", content: "image/png" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
     { property: "og:site_name", content: entry.title },
     { property: "og:description", content: entry.desc },
     { name: "theme-color", content: "#cc536e" },
@@ -185,4 +187,3 @@ useHead({
   ],
 });
 </script>
-
