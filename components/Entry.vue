@@ -9,7 +9,7 @@
       <div class="w-full max-w-3xl px-4 sm:px-6 mb-16 sm:mb-20 noselect">
         <NuxtLink
           to="/"
-          class="fixed top-4 left-4 sm:top-6 sm:left-6 text-gray-800 dark:text-white text-2xl sm:text-4xl z-50"
+          class="absolute top-4 left-4 sm:top-6 sm:left-6 text-gray-800 dark:text-white text-2xl sm:text-4xl z-50"
         >
           <UTooltip
             :text="$t('backward')"
