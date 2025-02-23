@@ -86,7 +86,7 @@
             />
             <UButton
               @click="submitComment"
-              class="text-gray-600 dark:text-white px-4 py-2 rounded mt-3"
+              class="text-gray-600 dark:text-white px-4 py-2 rounded mt-3 cursor-pointer"
               color="secondary"
               variant="outline"
             >
