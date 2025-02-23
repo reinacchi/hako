@@ -36,7 +36,7 @@
       >
         <router-link :to="'/entries/' + entry.id">
           <h3
-            class="text-xl sm:text-3xl font-bold mt-6 sm:mt-10 text-brick-red-400 dark:text-brick-red-300"
+            class="text-xl sm:text-3xl font-bold mt-6 sm:mt-10 text-brick-red-400 hover:text-brick-red-600 dark:text-brick-red-300 dark:hover:text-brick-red-500 transition"
           >
             {{ entry.title }}
           </h3>

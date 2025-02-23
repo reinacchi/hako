@@ -9,7 +9,7 @@
       <div class="w-full max-w-3xl px-4 sm:px-6 mb-16 sm:mb-20 noselect">
         <NuxtLink
           to="/"
-          class="absolute top-4 left-4 sm:top-6 sm:left-6 text-gray-800 dark:text-white text-2xl sm:text-4xl z-50"
+          class="absolute top-[24px] left-4 sm:top-6 sm:left-6 text-gray-800 dark:text-white text-2xl sm:text-4xl z-50"
         >
           <UTooltip
             :text="$t('backward')"
@@ -20,7 +20,7 @@
           </UTooltip>
         </NuxtLink>
 
-        <div class="mt-16 sm:mt-20">
+        <div class="mt-22 sm:mt-24">
           <h3
             class="mt-3 text-xl sm:text-3xl font-bold text-brick-red-300 dark:text-brick-red-300"
           >
@@ -104,25 +104,28 @@
               <USkeleton class="h-4 w-full" />
             </div>
           </div>
-
-          <div v-if="comments.length" class="mt-6 space-y-4">
-            <div
-              v-for="comment in comments"
-              :key="comment.id"
-              class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
-            >
-              <p class="text-sm text-gray-600 dark:text-gray-400 font-semibold">
-                {{ comment.name }} •
-                {{ moment(comment.date).format("Do MMM, YYYY HH:mm") }}
-              </p>
-              <p class="mt-2 text-gray-800 dark:text-gray-200">
-                {{ comment.text }}
-              </p>
+          <div v-else>
+            <div v-if="comments.length" class="mt-6 space-y-4">
+              <div
+                v-for="comment in comments"
+                :key="comment.id"
+                class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
+              >
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 font-semibold"
+                >
+                  {{ comment.name }} •
+                  {{ moment(comment.date).format("Do MMM, YYYY HH:mm") }}
+                </p>
+                <p class="mt-2 text-gray-800 dark:text-gray-200">
+                  {{ comment.text }}
+                </p>
+              </div>
             </div>
+            <p v-else class="mt-4 text-gray-600 dark:text-gray-400">
+              {{ $t("entry.comment.none") }}
+            </p>
           </div>
-          <p v-else class="mt-4 text-gray-600 dark:text-gray-400">
-            {{ $t("entry.comment.none") }}
-          </p>
         </div>
       </div>
     </div>

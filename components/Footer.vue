@@ -22,7 +22,7 @@
           />
         </NuxtLink>
         <NuxtLink
-          to="https://github.com/reinacchi"
+          to="https://github.com/reinacchi/hako"
           target="_blank"
           aria-label="GitHub"
         >
