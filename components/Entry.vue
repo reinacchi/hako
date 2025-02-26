@@ -94,11 +94,11 @@
             </UButton>
           </div>
 
-          <div v-if="isLoading" class="mt-6 space-y-4">
+          <div v-if="isLoading" class="mt-6">
             <div
               v-for="n in 2"
               :key="n"
-              class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
+              class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg mt-4"
             >
               <USkeleton class="h-4 w-32 mb-2" />
               <USkeleton class="h-4 w-full" />
