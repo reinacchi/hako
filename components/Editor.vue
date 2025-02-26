@@ -1,11 +1,11 @@
 <template>
   <div
-    class="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg text-gray-900 dark:text-white space-y-6"
+    class="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg text-gray-900 dark:text-white"
   >
-    <div class="space-y-4">
+    <div>
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
+          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
           >{{ $t("editor.md.title") }}</label
         >
         <UInput
@@ -19,7 +19,7 @@
 
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
+          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
           >{{ $t("editor.md.desc") }}</label
         >
         <UInput
@@ -33,7 +33,7 @@
 
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
+          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
           >{{ $t("editor.md.author") }}</label
         >
         <UInput
@@ -47,19 +47,19 @@
 
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2"
+          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2 mt-4"
           >{{ $t("editor.md.tags") }}</label
         >
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tag in tags"
             :key="tag"
-            class="px-3 py-1 bg-gray-300 dark:bg-gray-700 rounded text-sm flex items-center gap-2 text-gray-900 dark:text-white"
+            class="px-3 py-1 bg-gray-400 dark:bg-gray-800 rounded text-sm flex items-center gap-2 h-7 text-gray-900 dark:text-white"
           >
             {{ tag }}
             <button
               @click="removeTag(tag)"
-              class="text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 focus:outline-none"
+              class="text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 focus:outline-none transition"
             >
               <UIcon name="i-lucide-x" class="mt-2" />
             </button>
@@ -78,7 +78,7 @@
 
     <div>
       <label
-        class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2"
+        class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2 mt-4"
         >{{ $t("editor.md.content") }}</label
       >
       <div
@@ -90,7 +90,7 @@
 
     <div>
       <label
-        class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
+        class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
         >{{ $t("editor.md.live") }}</label
       >
       <pre
@@ -102,6 +102,7 @@
     <UButton
       color="primary"
       size="xl"
+      class="mt-4"
       variant="outline"
       :label="$t('editor.md.post')"
       @click="postEntry"

@@ -39,7 +39,14 @@
           />
         </div>
         <div class="mt-10" v-if="isAuth">
-          <Editor />
+          <UTabs :items="tabItems" variant="link" class="gap-4" color="neutral">
+            <template #new="{ item }">
+              <p class="text-(--ui-text-muted) mb-4">
+                {{ item.description }}
+              </p>
+              <Editor />
+            </template>
+          </UTabs>
         </div>
       </template>
     </UModal>
@@ -58,11 +65,23 @@
 </template>
 
 <script setup>
-const { locale, locales, setLocale } = useI18n();
+const { locale, locales, setLocale, t } = useI18n();
 const colourMode = useColorMode();
 const config = useAppConfig();
 const pin = ref([]);
 const isAuth = ref(false);
+const tabItems = [
+  {
+    label: t("editor.new"),
+    description: t("editor.new.desc"),
+    slot: "new",
+  },
+  {
+    label: t("editor.edit"),
+    description: t("editor.edit.desc"),
+    slot: "edit",
+  },
+];
 
 const availableLocales = computed(() => {
   return locales.value.filter((i) => i.code !== locale.value);
