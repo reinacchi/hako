@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-/* Brick Red*/
 @theme {
+    /* Brick Red*/
     --color-brick-red-50: #ecbfc9;
     --color-brick-red-100: #e5a9b7;
     --color-brick-red-200: #df94a5;
@@ -11,17 +11,29 @@
     --color-brick-red-500: #cc536e;
     --color-brick-red-600: #c53e5c;
     --color-brick-red-700: #bf284a;
-    --color-brick-red-800: #d;
+    --color-brick-red-800: #ac2443;
     --color-brick-red-900: #99203b;
     --color-brick-red-950: #861c34;
+    /* Midnight */
+    --color-midnight-50: #e3e4e8;
+  --color-midnight-100: #c7c9d2;
+  --color-midnight-200: #9fa2af;
+  --color-midnight-300: #71758a;
+  --color-midnight-400: #4e5064;
+  --color-midnight-500: #37394a; /* Dusk core */
+  --color-midnight-600: #242635;
+  --color-midnight-700: #181a26;
+  --color-midnight-800: #0e111a;
+  --color-midnight-900: #080a12; /* Midnight */
+  --color-midnight-950: #04050b; /* Deepest midnight */
 }
 
 :root {
-    --bg-color: #f8fbf8;
+    --bg-color: #e3e4e8;
 }
 
 .dark {
-    --bg-color: #030712;
+    --bg-color: #04050b;
 }
 
 body {
@@ -106,11 +118,11 @@ body {
 
 @media (prefers-color-scheme: dark) {
     ::-webkit-scrollbar-track {
-        background: #020618;
+        background-color: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #4b5563;
+        background: #37394a;
     }
 
     ::-webkit-scrollbar-thumb:hover {

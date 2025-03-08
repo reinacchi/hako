@@ -1,11 +1,11 @@
 <template>
   <div
-    class="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg text-gray-900 dark:text-white"
+    class="p-6 bg-white dark:bg-midnight-900 rounded-lg shadow-lg text-midnight-900 dark:text-white"
   >
     <div>
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
+          class="block text-sm font-medium text-midnight-600 dark:text-midnight-400 mb-1 mt-4"
           >{{ $t("editor.md.title") }}</label
         >
         <UInput
@@ -13,13 +13,13 @@
           v-model="title"
           :placeholder="$t('editor.md.title.s')"
           size="lg"
-          class="bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white w-[23rem]"
+          class="bg-midnight-100 dark:bg-midnight-800 border-midnight-300 dark:border-midnight-700 text-midnight-900 dark:text-white w-[23rem]"
         />
       </div>
 
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
+          class="block text-sm font-medium text-midnight-600 dark:text-midnight-400 mb-1 mt-4"
           >{{ $t("editor.md.desc") }}</label
         >
         <UInput
@@ -27,13 +27,13 @@
           v-model="description"
           :placeholder="$t('editor.md.desc.s')"
           size="lg"
-          class="bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white w-[23rem]"
+          class="bg-midnight-200 dark:bg-midnight-800 border-midnight-300 dark:border-midnight-700 text-midnight-900 dark:text-white w-[23rem]"
         />
       </div>
 
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
+          class="block text-sm font-medium text-midnight-600 dark:text-midnight-400 mb-1 mt-4"
           >{{ $t("editor.md.author") }}</label
         >
         <UInput
@@ -41,25 +41,25 @@
           v-model="author"
           :placeholder="$t('editor.md.author.s')"
           size="lg"
-          class="bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white w-[23rem]"
+          class="bg-midnight-200 dark:bg-midnight-800 border-midnight-300 dark:border-midnight-700 text-midnight-900 dark:text-white w-[23rem]"
         />
       </div>
 
       <div>
         <label
-          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2 mt-4"
+          class="block text-sm font-medium text-midnight-600 dark:text-midnight-400 mb-2 mt-4"
           >{{ $t("editor.md.tags") }}</label
         >
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tag in tags"
             :key="tag"
-            class="px-3 py-1 bg-gray-400 dark:bg-gray-800 rounded text-sm flex items-center gap-2 h-7 text-gray-900 dark:text-white"
+            class="px-3 py-1 bg-midnight-400 dark:bg-midnight-800 rounded text-sm flex items-center gap-2 h-7 text-midnight-900 dark:text-white"
           >
             {{ tag }}
             <button
               @click="removeTag(tag)"
-              class="text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 focus:outline-none transition"
+              class="text-midnight-600 dark:text-midnight-300 hover:text-red-500 dark:hover:text-red-400 focus:outline-none transition"
             >
               <UIcon name="i-lucide-x" class="mt-2" />
             </button>
@@ -70,7 +70,7 @@
           v-model="tagInput"
           :placeholder="$t('editor.md.tags.s')"
           size="md"
-          class="bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white mt-3 w-[23rem]"
+          class="bg-midnight-200 dark:bg-midnight-800 border-midnight-300 dark:border-midnight-700 text-midnight-900 dark:text-white mt-3 w-[23rem]"
           @keydown.enter.prevent="addTag"
         />
       </div>
@@ -78,11 +78,11 @@
 
     <div>
       <label
-        class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2 mt-4"
+        class="block text-sm font-medium text-midnight-600 dark:text-midnight-400 mb-2 mt-4"
         >{{ $t("editor.md.content") }}</label
       >
       <div
-        class="border border-gray-300 dark:border-gray-700 rounded bg-gray-200 dark:bg-gray-800 p-2"
+        class="border border-midnight-300 dark:border-midnight-700 rounded bg-midnight-100 dark:bg-midnight-800 p-2"
       >
         <EditorContent :editor="editor" />
       </div>
@@ -90,11 +90,11 @@
 
     <div>
       <label
-        class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 mt-4"
+        class="block text-sm font-medium text-midnight-600 dark:text-midnight-400 mb-1 mt-4"
         >{{ $t("editor.md.live") }}</label
       >
       <pre
-        class="p-3 bg-gray-200 dark:bg-gray-800 rounded text-sm whitespace-pre-wrap text-gray-900 dark:text-white"
+        class="p-3 bg-midnight-100 dark:bg-midnight-800 rounded text-sm whitespace-pre-wrap text-midnight-900 dark:text-white"
         >{{ content }}</pre
       >
     </div>

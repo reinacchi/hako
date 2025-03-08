@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen flex justify-center relative bg-gray-100 dark:bg-gray-950 transition-colors"
+    class="min-h-screen flex justify-center relative bg-midnight-50 dark:bg-midnight-950 transition-colors"
   >
     <div
       v-if="isLoading"
@@ -8,7 +8,7 @@
     >
       <UIcon
         name="i-lucide-loader"
-        class="animate-spin text-3xl text-gray-500 dark:text-gray-300"
+        class="animate-spin text-3xl text-midnight-500 dark:text-midnight-100"
       />
     </div>
 
@@ -24,7 +24,7 @@
         Hako
       </h1>
       <p
-        class="noselect mt-5 text-lg sm:text-xl text-gray-400 dark:text-gray-300"
+        class="noselect mt-5 text-lg sm:text-xl text-midnight-500 dark:text-midnight-100"
       >
         {{ $t("welcome") }}
       </p>
@@ -43,7 +43,7 @@
         </router-link>
 
         <p
-          class="mt-1 text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
+          class="mt-1 text-midnight-700 dark:text-midnight-100 text-sm sm:text-base font-semibold"
         >
           {{ moment(entry.date).format("Do MMM, YYYY") }} •
           <span class="font-bold">{{ entry.author }}</span>
@@ -51,7 +51,7 @@
 
         <div class="mt-3 inline-flex flex-wrap items-center gap-2">
           <blockquote
-            class="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 text-sm sm:text-base"
+            class="border-l-4 border-midnight-100 dark:border-midnight-600 pl-4 italic text-midnight-700 dark:text-midnight-200 text-sm sm:text-base"
           >
             {{ entry.desc }}
           </blockquote>
@@ -59,7 +59,7 @@
           <p
             v-for="tag in entry.tags"
             :key="tag"
-            class="text-gray-600 dark:text-gray-200 bg-[#FFBADB] dark:bg-[#682c3f] text-xs sm:text-sm font-medium px-2 py-1 rounded border border-[#BC5677] dark:border-[#91415a]"
+            class="text-midnight-600 dark:text-midnight-50 bg-brick-red-100 dark:bg-brick-red-600 text-xs sm:text-sm font-medium px-2 py-1 rounded border border-brick-red-500 dark:border-brick-red-950"
           >
             #{{ tag }}
           </p>

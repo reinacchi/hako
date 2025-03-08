@@ -4,12 +4,12 @@
   </div>
   <div v-else>
     <div
-      class="min-h-screen flex justify-center relative bg-gray-100 dark:bg-gray-950 transition-colors px-4 sm:px-0"
+      class="min-h-screen flex justify-center relative bg-midnight-50 dark:bg-midnight-950 transition-colors px-4 sm:px-0"
     >
       <div class="w-full max-w-3xl px-4 sm:px-6 mb-16 sm:mb-20 noselect">
         <NuxtLink
           to="/"
-          class="absolute top-[24px] left-4 sm:top-6 sm:left-6 text-gray-800 dark:text-white text-2xl sm:text-4xl z-50"
+          class="absolute top-[24px] left-4 sm:top-6 sm:left-6 text-midnight-800 dark:text-white text-2xl sm:text-4xl z-50"
         >
           <UTooltip
             :text="$t('backward')"
@@ -22,13 +22,13 @@
 
         <div class="mt-22 sm:mt-24">
           <h3
-            class="mt-3 text-xl sm:text-3xl font-bold text-brick-red-300 dark:text-brick-red-300"
+            class="mt-3 text-xl sm:text-3xl font-bold text-brick-red-400 dark:text-brick-red-300"
           >
             {{ entry.title }}
           </h3>
 
           <p
-            class="mt-3 text-gray-700 dark:text-gray-300 text-sm sm:text-base font-semibold"
+            class="mt-3 text-midnight-700 dark:text-midnight-100 text-sm sm:text-base font-semibold"
           >
             {{ moment(entry.date).format("Do MMM, YYYY") }} •
             <span class="font-bold">{{ entry.author }}</span>
@@ -36,7 +36,7 @@
 
           <div class="mt-3 flex flex-wrap gap-2 items-start sm:items-center">
             <blockquote
-              class="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 text-sm sm:text-base w-full sm:w-auto"
+              class="border-l-4 border-midnight-300 dark:border-midnight-600 pl-4 italic text-midnight-700 dark:text-midnight-300 text-sm sm:text-base w-full sm:w-auto"
             >
               {{ entry.desc }}
             </blockquote>
@@ -45,7 +45,7 @@
               <p
                 v-for="tag in entry.tags"
                 :key="tag"
-                class="text-gray-600 dark:text-gray-200 bg-[#FFBADB] dark:bg-[#682c3f] text-xs sm:text-sm font-medium px-2 py-1 rounded border border-[#BC5677] dark:border-[#91415a]"
+                class="text-midnight-600 dark:text-midnight-50 bg-brick-red-100 dark:bg-brick-red-600 text-xs sm:text-sm font-medium px-2 py-1 rounded border border-brick-red-500 dark:border-brick-red-950"
               >
                 #{{ tag }}
               </p>
@@ -58,7 +58,7 @@
         />
 
         <div
-          class="mt-6 text-gray-800 dark:text-gray-300 text-sm sm:text-base leading-relaxed"
+          class="mt-6 text-midnight-800 dark:text-midnight-100 text-sm sm:text-base leading-relaxed"
         >
           <span v-html="entry.content" class="mb-4"></span>
         </div>
@@ -67,7 +67,7 @@
         />
 
         <div class="mt-10">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
+          <h3 class="text-2xl font-bold text-midnight-800 dark:text-midnight-50">
             {{ $t("entry.comment") }}
           </h3>
 
@@ -76,17 +76,17 @@
               color="none"
               v-model="newComment.name"
               :placeholder="$t('entry.comment.name')"
-              class="w-full text-gray-800 dark:text-gray-200 mt-3"
+              class="w-full dark:bg-midnight-800 text-midnight-800 dark:text-midnight-200 mt-3"
             />
             <UTextarea
               color="none"
               v-model="newComment.text"
               :placeholder="$t('entry.comment.write')"
-              class="w-full text-gray-800 dark:text-gray-200 mt-3"
+              class="w-full text-midnight-800 dark:text-midnight-200 mt-3"
             />
             <UButton
               @click="submitComment"
-              class="text-gray-600 dark:text-white px-4 py-2 rounded mt-3 cursor-pointer"
+              class="text-midnight-600 dark:text-white px-4 py-2 rounded mt-3 cursor-pointer"
               color="secondary"
               variant="outline"
             >
@@ -98,7 +98,7 @@
             <div
               v-for="n in 2"
               :key="n"
-              class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg mt-4"
+              class="p-4 border border-midnight-300 dark:border-midnight-500 rounded-lg mt-4"
             >
               <USkeleton class="h-4 w-32 mb-2" />
               <USkeleton class="h-4 w-full" />
@@ -109,20 +109,20 @@
               <div
                 v-for="comment in comments"
                 :key="comment.id"
-                class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
+                class="p-4 border border-midnight-300 dark:border-midnight-500 rounded-lg"
               >
                 <p
-                  class="text-sm text-gray-600 dark:text-gray-400 font-semibold"
+                  class="text-sm text-midnight-600 dark:text-midnight-400 font-semibold"
                 >
                   {{ comment.name }} •
                   {{ moment(comment.date).format("Do MMM, YYYY HH:mm") }}
                 </p>
-                <p class="mt-2 text-gray-800 dark:text-gray-200">
+                <p class="mt-2 text-midnight-800 dark:text-midnight-200">
                   {{ comment.text }}
                 </p>
               </div>
             </div>
-            <p v-else class="mt-4 text-gray-600 dark:text-gray-400">
+            <p v-else class="mt-4 text-midnight-600 dark:text-midnight-200">
               {{ $t("entry.comment.none") }}
             </p>
           </div>

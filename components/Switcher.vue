@@ -27,7 +27,7 @@
 
       <template #body>
         <div>
-          <p class="text-gray-600 dark:text-gray-300">
+          <p class="text-midnight-600 dark:text-midnight-300">
             {{ $t("editor.step") }}
           </p>
           <UPinInput
