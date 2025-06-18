@@ -29,9 +29,39 @@
         {{ $t("welcome") }}
       </p>
 
+      <div class="mt-6 mb-6 flex flex-wrap gap-2">
+        <button
+          v-for="tag in allTags"
+          :key="tag"
+          @click="toggleTagFilter(tag)"
+          class="text-xs sm:text-sm font-medium px-2 py-1 rounded border transition"
+          :class="{
+            'text-midnight-600 dark:text-midnight-50 bg-brick-red-100 dark:bg-brick-red-600 border-brick-red-500 dark:border-brick-red-950':
+              selectedTags.includes(tag),
+            'text-midnight-500 dark:text-midnight-300 bg-midnight-100 dark:bg-midnight-800 border-midnight-300 dark:border-midnight-600 hover:bg-midnight-200 dark:hover:bg-midnight-700':
+              !selectedTags.includes(tag),
+          }"
+        >
+          #{{ tag }}
+        </button>
+        <button
+          v-if="selectedTags.length > 0"
+          @click="clearFilters"
+          class="text-xs sm:text-sm font-medium px-2 py-1 rounded border border-midnight-300 dark:border-midnight-600 text-midnight-500 dark:text-midnight-300 hover:bg-midnight-200 dark:hover:bg-midnight-700 transition"
+        >
+          {{ $t("tag.clear") }}
+        </button>
+      </div>
+
+      <div v-if="filteredEntries.length === 0" class="mt-10 text-center">
+        <p class="text-midnight-500 dark:text-midnight-300">
+          {{ $t("tag.none") }}
+        </p>
+      </div>
+
       <div
         class="text-left noselect"
-        v-for="entry in entries"
+        v-for="entry in filteredEntries"
         :key="entry.id"
       >
         <router-link :to="'/entries/' + entry.id">
@@ -74,6 +104,40 @@ import moment from "moment";
 
 const entries = ref([]);
 const isLoading = ref(true);
+const selectedTags = ref([]);
+
+const allTags = computed(() => {
+  const tags = new Set();
+  entries.value.forEach((entry) => {
+    entry.tags.forEach((tag) => tags.add(tag));
+  });
+  return Array.from(tags).sort();
+});
+
+const filteredEntries = computed(() => {
+  if (selectedTags.value.length === 0) {
+    return entries.value.filter(
+      (entry) => !entry.tags.some((tag) => ["jp", "2rkf", "3rkf"].includes(tag))
+    );
+  }
+
+  return entries.value.filter((entry) =>
+    selectedTags.value.every((tag) => entry.tags.includes(tag))
+  );
+});
+
+const toggleTagFilter = (tag) => {
+  const index = selectedTags.value.indexOf(tag);
+  if (index === -1) {
+    selectedTags.value.push(tag);
+  } else {
+    selectedTags.value.splice(index, 1);
+  }
+};
+
+const clearFilters = () => {
+  selectedTags.value = [];
+};
 
 onMounted(async () => {
   try {

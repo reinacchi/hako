@@ -1,6 +1,8 @@
 {
   "welcome": "Eine Kollektion archiverbarer Schriften.",
   "backward": "Rückwärts",
+  "tag.clear": "Filter zurücksetzen",
+  "tag.none": "Keine Einträge entsprechen den ausgewählten Tags.",
   "editor.title": "Eintragseditor",
   "editor.desc": "Dies ist der Eingabe-Editor, in dem alle Einträge verfasst werden. Der Zugang zu diesem Bereich ist ausschließlich autorisierten Nutzern gestattet.",
   "editor.new": "Neuer Eintrag",

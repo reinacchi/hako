@@ -1,6 +1,8 @@
 {
   "welcome": "A collection of archivable writings.",
   "backward": "Backward",
+  "tag.clear": "Clear filters",
+  "tag.none": "No entries match the selected tags.",
   "editor.title": "Entry Editor",
   "editor.desc": "This is the Entry Editor, where all entries are created. Access to this area is restricted to authorised users only.",
   "editor.new": "New Entry",
