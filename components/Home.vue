@@ -61,7 +61,7 @@
 
       <div
         class="text-left noselect"
-        v-for="entry in filteredEntries"
+        v-for="entry in paginatedEntries"
         :key="entry.id"
       >
         <router-link :to="'/entries/' + entry.id">
@@ -95,6 +95,37 @@
           </p>
         </div>
       </div>
+
+      <!-- Pagination controls -->
+      <div class="flex justify-center mt-8 gap-2">
+        <button
+          @click="prevPage"
+          :disabled="currentPage === 1"
+          class="px-3 py-1 rounded border"
+          :class="{
+            'cursor-not-allowed text-midnight-300 dark:text-midnight-600 border-midnight-200 dark:border-midnight-700': currentPage === 1,
+            'text-midnight-500 dark:text-midnight-300 border-midnight-300 dark:border-midnight-600 hover:bg-midnight-200 dark:hover:bg-midnight-700': currentPage > 1,
+          }"
+        >
+          {{ $t("home.page.previous") }}
+        </button>
+
+        <span class="px-3 py-1 text-midnight-700 dark:text-midnight-200">
+          {{ $t("home.page.title", { current: currentPage, total: totalPages }) }}
+        </span>
+
+        <button
+          @click="nextPage"
+          :disabled="currentPage === totalPages"
+          class="px-3 py-1 rounded border"
+          :class="{
+            'cursor-not-allowed text-midnight-300 dark:text-midnight-600 border-midnight-200 dark:border-midnight-700': currentPage === totalPages,
+            'text-midnight-500 dark:text-midnight-300 border-midnight-300 dark:border-midnight-600 hover:bg-midnight-200 dark:hover:bg-midnight-700': currentPage < totalPages,
+          }"
+        >
+          {{ $t("home.page.next") }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -105,6 +136,8 @@ import moment from "moment";
 const entries = ref([]);
 const isLoading = ref(true);
 const selectedTags = ref([]);
+const currentPage = ref(1);
+const itemsPerPage = 5;
 
 const allTags = computed(() => {
   const tags = new Set();
@@ -126,6 +159,16 @@ const filteredEntries = computed(() => {
   );
 });
 
+const totalPages = computed(() => {
+  return Math.ceil(filteredEntries.value.length / itemsPerPage);
+});
+
+const paginatedEntries = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return filteredEntries.value.slice(start, end);
+});
+
 const toggleTagFilter = (tag) => {
   const index = selectedTags.value.indexOf(tag);
   if (index === -1) {
@@ -133,10 +176,25 @@ const toggleTagFilter = (tag) => {
   } else {
     selectedTags.value.splice(index, 1);
   }
+  // Reset to first page when filters change
+  currentPage.value = 1;
 };
 
 const clearFilters = () => {
   selectedTags.value = [];
+  currentPage.value = 1;
+};
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
 };
 
 onMounted(async () => {
