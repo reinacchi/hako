@@ -12,7 +12,7 @@
       </p>
       <div class="flex gap-4">
         <NuxtLink
-          to="https://twitter.com/reinacchi_"
+          to="https://twitter.com/poketto8080"
           target="_blank"
           aria-label="Twitter"
         >
