@@ -96,35 +96,23 @@
         </div>
       </div>
 
-      <!-- Pagination controls -->
-      <div class="flex justify-center mt-8 gap-2">
-        <button
-          @click="prevPage"
-          :disabled="currentPage === 1"
-          class="px-3 py-1 rounded border"
-          :class="{
-            'cursor-not-allowed text-midnight-300 dark:text-midnight-600 border-midnight-200 dark:border-midnight-700': currentPage === 1,
-            'text-midnight-500 dark:text-midnight-300 border-midnight-300 dark:border-midnight-600 hover:bg-midnight-200 dark:hover:bg-midnight-700': currentPage > 1,
+      <div class="flex justify-center mt-10">
+        <UPagination
+          :page="currentPage"
+          @update:page="currentPage = $event"
+          :items-per-page="itemsPerPage"
+          :total="filteredEntries.length"
+          :ui="{
+            wrapper: 'flex items-center gap-2',
+            item: {
+              base: 'px-3 py-1 rounded border border-midnight-300 dark:border-midnight-600 text-midnight-500 dark:text-midnight-300 hover:bg-midnight-200 dark:hover:bg-midnight-700 transition',
+              active:
+                'bg-brick-red-100 dark:bg-brick-red-600 border-brick-red-500 dark:border-brick-red-950 text-midnight-800 dark:text-midnight-50 font-semibold',
+              disabled:
+                'cursor-not-allowed text-midnight-300 dark:text-midnight-600 border-midnight-200 dark:border-midnight-700',
+            },
           }"
-        >
-          {{ $t("home.page.previous") }}
-        </button>
-
-        <span class="px-3 py-1 text-midnight-700 dark:text-midnight-200">
-          {{ $t("home.page.title", { current: currentPage, total: totalPages }) }}
-        </span>
-
-        <button
-          @click="nextPage"
-          :disabled="currentPage === totalPages"
-          class="px-3 py-1 rounded border"
-          :class="{
-            'cursor-not-allowed text-midnight-300 dark:text-midnight-600 border-midnight-200 dark:border-midnight-700': currentPage === totalPages,
-            'text-midnight-500 dark:text-midnight-300 border-midnight-300 dark:border-midnight-600 hover:bg-midnight-200 dark:hover:bg-midnight-700': currentPage < totalPages,
-          }"
-        >
-          {{ $t("home.page.next") }}
-        </button>
+        />
       </div>
     </div>
   </div>
