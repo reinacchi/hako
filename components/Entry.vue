@@ -188,7 +188,7 @@ const submitComment = async () => {
 };
 
 useHead({
-  title: "Hako",
+  title: `${entry.title} - Hako`,
   meta: [
     { property: "og:title", content: "Hako" },
     { property: "og:image", content: "/hako.png" },

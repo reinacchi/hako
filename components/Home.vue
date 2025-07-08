@@ -173,18 +173,6 @@ const clearFilters = () => {
   currentPage.value = 1;
 };
 
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++;
-  }
-};
-
-const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--;
-  }
-};
-
 onMounted(async () => {
   try {
     const data = await $fetch("/api/entries");
