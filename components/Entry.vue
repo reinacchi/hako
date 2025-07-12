@@ -148,7 +148,7 @@ const isLoading = ref(true);
 const fetchComments = async () => {
   try {
     const fetchedComments = await $fetch(`/api/entries/${entryID}/comments`);
-    comments.value = fetchedComments.reverse();
+    comments.value = fetchedComments;
   } catch (error) {
     console.error("Failed to fetch comments:", error);
   } finally {
