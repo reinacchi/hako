@@ -138,7 +138,7 @@ const allTags = computed(() => {
 const filteredEntries = computed(() => {
   if (selectedTags.value.length === 0) {
     return entries.value.filter(
-      (entry) => !entry.tags.some((tag) => ["omake", "3rkf"].includes(tag))
+      (entry) => !entry.tags.some((tag) => ["omake", "3rkf", "7rkf"].includes(tag))
     );
   }
 
